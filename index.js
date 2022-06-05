@@ -14,7 +14,7 @@ async function main() {
         bot.sendMessage(msg.chat.id, "Jarrvee at yourrr serviceeee. What would you like to do, " + msg.from.first_name + " ?", {
             "reply_markup": {
                 "keyboard": [
-                    ["1) Get Homework List"]
+                    ["1) Get Homework List"],
                     ["KILL BOT"]
                 ]
             }
