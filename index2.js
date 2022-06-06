@@ -12,6 +12,9 @@ app.use(express.json())
 
 
 async function main() {
+
+
+
     app.get("/", (req,res) => {
         res.status(200).json({
             "message": "Hello! The bot is working!"
@@ -19,6 +22,8 @@ async function main() {
     })
     
     app.post(`/${process.env.TELEGRAM_TOKEN}`, (req,res) => {
+        const bot = new TelegramBot(token)
+        bot.setWebHook(process.env.HEROKU_URL + API_KEY)
         bot.processUpdate(req.body)
     })
 
