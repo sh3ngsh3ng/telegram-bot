@@ -14,6 +14,7 @@ app.use(express.json())
 async function main() {
 
     const bot = new TelegramBot(token)
+    bot.setWebHook(process.env.HEROKU_URL + token)
 
     app.get("/", (req,res) => {
         res.status(200).json({
@@ -23,7 +24,7 @@ async function main() {
     
     app.post(`/${process.env.API_KEY}`, (req,res) => {
         console.log("webhook called")
-        bot.setWebHook(process.env.HEROKU_URL + token)
+
         bot.processUpdate(req.body)
         res.status(200).json({ message: 'ok' });
     })
@@ -44,6 +45,7 @@ async function main() {
         // console.log("Message send =>", msg)
         var Hi = "hi";
         if (msg.text.toString().toLowerCase().indexOf(Hi) === 0) {
+            console.log("Hi is called")
             bot.sendMessage(msg.chat.id,"Hello " + msg.from.first_name);
         }
 
