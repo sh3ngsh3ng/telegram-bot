@@ -25,6 +25,7 @@ async function main() {
         console.log("webhook called")
         bot.setWebHook(process.env.HEROKU_URL + token)
         bot.processUpdate(req.body)
+        res.status(200).json({ message: 'ok' });
     })
 
 
