@@ -14,7 +14,6 @@ app.use(express.json())
 async function main() {
 
     const bot = new TelegramBot(token)
-    
 
     app.get("/", (req,res) => {
         res.status(200).json({
@@ -22,7 +21,7 @@ async function main() {
         })
     })
     
-    app.post(`/${token}}`, (req,res) => {
+    app.post(`/${process.env.API_KEY}`, (req,res) => {
         console.log("webhook called")
         bot.setWebHook(process.env.HEROKU_URL + token)
         bot.processUpdate(req.body)
