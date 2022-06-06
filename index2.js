@@ -21,7 +21,7 @@ async function main() {
         })
     })
     
-    app.post(`/${process.env.TELEGRAM_TOKEN}`, (req,res) => {
+    app.post(`/${process.env.API_KEY}`, (req,res) => {
         bot.setWebHook(process.env.HEROKU_URL + API_KEY)
         bot.processUpdate(req.body)
     })
