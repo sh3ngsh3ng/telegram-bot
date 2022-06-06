@@ -23,7 +23,7 @@ async function main() {
     
     app.post(`/${process.env.API_KEY}`, (req,res) => {
         console.log("webhook called")
-        bot.setWebHook(process.env.HEROKU_URL + API_KEY)
+        bot.setWebHook(process.env.HEROKU_URL + token)
         bot.processUpdate(req.body)
     })
 
